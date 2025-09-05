@@ -298,6 +298,7 @@ const Services = () => {
                   src={activeServiceData.image}
                   alt={activeServiceData.title}
                   className="rounded-2xl shadow-2xl w-full"
+                  loading="lazy"
                 />
                 <div className={`absolute inset-0 bg-gradient-to-t ${activeServiceData.color.replace('from-', 'from-').replace('to-', 'to-')} opacity-20 rounded-2xl`}></div>
               </div>

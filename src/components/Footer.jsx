@@ -109,22 +109,22 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-gray-300 hover:text-primary-400 transition-colors duration-200">
+                <Link to="/services" className="text-light-text/80 hover:text-primary-blue transition-colors duration-200">
                   {t('footer.services')}
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-300 hover:text-primary-400 transition-colors duration-200">
+                <Link to="/about" className="text-light-text/80 hover:text-primary-blue transition-colors duration-200">
                   {t('footer.about')}
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-primary-400 transition-colors duration-200">
+                <Link to="/contact" className="text-light-text/80 hover:text-primary-blue transition-colors duration-200">
                   {t('footer.contact')}
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="text-gray-300 hover:text-primary-400 transition-colors duration-200">
+                <Link to="/blog" className="text-light-text/80 hover:text-primary-blue transition-colors duration-200">
                   {t('footer.blog')}
                 </Link>
               </li>
@@ -137,7 +137,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.services.slice(0, 5).map((service, index) => (
                 <li key={index}>
-                  <Link to="/services" className="text-gray-300 hover:text-primary-400 transition-colors duration-200">
+                  <Link to="/services" className="text-light-text/80 hover:text-primary-blue transition-colors duration-200">
                     {service}
                   </Link>
                 </li>
@@ -150,27 +150,27 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-6 text-white">{t('footer.legal')}</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/privacy" className="text-gray-300 hover:text-primary-400 transition-colors duration-200">
+                <Link to="/privacy" className="text-light-text/80 hover:text-primary-blue transition-colors duration-200">
                   {t('footer.privacy')}
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="text-gray-300 hover:text-primary-400 transition-colors duration-200">
+                <Link to="/terms" className="text-light-text/80 hover:text-primary-blue transition-colors duration-200">
                   {t('footer.terms')}
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-primary-400 transition-colors duration-200">
+                <Link to="/contact" className="text-light-text/80 hover:text-primary-blue transition-colors duration-200">
                   GDPR Compliance
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-primary-400 transition-colors duration-200">
+                <Link to="/contact" className="text-light-text/80 hover:text-primary-blue transition-colors duration-200">
                   Data Protection
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-primary-400 transition-colors duration-200">
+                <Link to="/contact" className="text-light-text/80 hover:text-primary-blue transition-colors duration-200">
                   Security Policy
                 </Link>
               </li>
