@@ -7,13 +7,63 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // New attractive color palette with WCAG 2.1 AA contrast
-        primary: '#1A252F',        // Dark blue-gray for backgrounds
-        'text-primary': '#E6ECEF', // Light gray for primary text
-        accent: '#00C4B4',         // Teal for buttons and highlights
-        'secondary-accent': '#F4A261', // Orange for hover states and accents
+        // Primary color with full shade range
+        primary: {
+          50: '#F0F2F5',
+          100: '#D9E0E7',
+          200: '#B3C0CF',
+          300: '#8DA0B7',
+          400: '#677F9F',
+          500: '#416087',
+          600: '#1A252F',
+          700: '#14202A',
+          800: '#0E161F',
+          900: '#090F15',
+        },
         
-        // Extended color palette for gradients and variations
+        // Text primary color with full shade range
+        'text-primary': {
+          50: '#F9FAFB',
+          100: '#F0F2F5',
+          200: '#E0E6EB',
+          300: '#D1DAE1',
+          400: '#C1CED7',
+          500: '#B2C2CD',
+          600: '#A2B6C3',
+          700: '#93AAB9',
+          800: '#839EAF',
+          900: '#7492A5',
+        },
+        
+        // Accent color with full shade range
+        accent: {
+          50: '#E6FFF9',
+          100: '#CCFFF3',
+          200: '#99FFE6',
+          300: '#66FFD9',
+          400: '#33FFCC',
+          500: '#00C4B4',
+          600: '#00B0A0',
+          700: '#009C8C',
+          800: '#008878',
+          900: '#007464',
+        },
+        
+        // Secondary accent color with full shade range
+        'secondary-accent': {
+          50: '#FEF1E6',
+          100: '#FCE4CC',
+          200: '#F9C999',
+          300: '#F7AD66',
+          400: '#F49A33',
+          500: '#F4A261',
+          600: '#E08F4D',
+          700: '#CC7C39',
+          800: '#B86925',
+          900: '#A45611',
+        },
+        
+        // Legacy single color values for backward compatibility
         'primary-dark': '#0F1419',
         'primary-light': '#2A3441',
         'accent-dark': '#00A896',

@@ -35,7 +35,7 @@ function App() {
   }, [i18n.language]);
 
   return (
-    <div className="min-h-screen bg-primary text-text-primary">
+    <div className="min-h-screen bg-primary-600 text-text-primary-600">
       <Navbar />
       <main>
         <Routes>

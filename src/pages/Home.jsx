@@ -91,7 +91,7 @@ const Home = () => {
             backgroundImage: 'url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80)'
           }}
         ></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/70 to-primary/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-600/80 via-primary-600/70 to-primary-600/90"></div>
         <div className="absolute inset-0 bg-black/30"></div>
 
         <div className="container-custom text-center relative z-10 text-white">
@@ -109,14 +109,14 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 to="/contact" 
-                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-accent to-accent-dark hover:from-accent-dark hover:to-accent text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-500 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 {t('hero.cta')}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
               <Link 
                 to="/services" 
-                className="inline-flex items-center px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-primary font-semibold rounded-lg transition-all duration-300 transform hover:scale-105"
+                className="inline-flex items-center px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold rounded-lg transition-all duration-300 transform hover:scale-105"
               >
                 {t('hero.learnMore')}
               </Link>
@@ -126,7 +126,7 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding bg-gradient-to-r from-primary-light to-primary-dark">
+      <section className="section-padding bg-gradient-to-r from-primary-500 to-primary-700">
         <div className="container-custom">
           <motion.div 
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
@@ -137,10 +137,10 @@ const Home = () => {
           >
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">
+                <div className="text-4xl md:text-5xl font-bold text-accent-500 mb-2">
                   {stat.number}
                 </div>
-                <div className="text-text-primary font-medium">{stat.label}</div>
+                <div className="text-text-primary-600 font-medium">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -157,7 +157,7 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary-600 mb-6">
               {t('services.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -179,7 +179,7 @@ const Home = () => {
                 <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md`}>
                   <service.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-primary mb-3">
+                <h3 className="text-xl font-semibold text-primary-600 mb-3">
                   {service.title}
                 </h3>
                 <p className="text-gray-600 mb-4 leading-relaxed">
@@ -187,7 +187,7 @@ const Home = () => {
                 </p>
                 <Link 
                   to={service.link}
-                  className="inline-flex items-center text-accent hover:text-accent-dark font-medium group-hover:translate-x-1 transition-all duration-300"
+                  className="inline-flex items-center text-accent-500 hover:text-accent-600 font-medium group-hover:translate-x-1 transition-all duration-300"
                 >
                   {t('common.learnMore')}
                   <ArrowRight className="w-4 h-4 ml-2" />
