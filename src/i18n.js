@@ -372,6 +372,16 @@ const resources = {
       'services.aiSolutions.features.dataProcessing': 'Intelligent Data Processing',
       'services.aiSolutions.features.businessIntelligence': 'Smart Business Intelligence',
       
+      // Blockchain Solutions
+      'services.blockchainSolutions.title': 'Blockchain Solutions',
+      'services.blockchainSolutions.description': 'Secure blockchain technology solutions for enterprise applications, smart contracts, and decentralized systems.',
+      'services.blockchainSolutions.features.smartContracts': 'Smart Contract Development',
+      'services.blockchainSolutions.features.dApps': 'Decentralized Applications',
+      'services.blockchainSolutions.features.crypto': 'Cryptocurrency Integration',
+      'services.blockchainSolutions.features.consulting': 'Blockchain Consulting',
+      'services.blockchainSolutions.features.audits': 'Security Audits',
+      'services.blockchainSolutions.features.tokens': 'Token Development',
+      
       // Services page additional keys
       'services.whyChoose.title': 'Why Choose Our Services?',
       'services.whyChoose.description': 'We deliver measurable results and long-term value for your business.',
@@ -740,6 +750,16 @@ const resources = {
       'services.aiSolutions.features.automation': 'KI-gestützte Automatisierung',
       'services.aiSolutions.features.dataProcessing': 'Intelligente Datenverarbeitung',
       'services.aiSolutions.features.businessIntelligence': 'Smarte Business Intelligence',
+      
+      // Blockchain Solutions
+      'services.blockchainSolutions.title': 'Blockchain-Lösungen',
+      'services.blockchainSolutions.description': 'Sichere Blockchain-Technologielösungen für Unternehmensanwendungen, Smart Contracts und dezentrale Systeme.',
+      'services.blockchainSolutions.features.smartContracts': 'Smart Contract Entwicklung',
+      'services.blockchainSolutions.features.dApps': 'Dezentrale Anwendungen',
+      'services.blockchainSolutions.features.crypto': 'Kryptowährungs-Integration',
+      'services.blockchainSolutions.features.consulting': 'Blockchain-Beratung',
+      'services.blockchainSolutions.features.audits': 'Sicherheitsaudits',
+      'services.blockchainSolutions.features.tokens': 'Token-Entwicklung',
       
       // Common keys
       'common.learnMore': 'Mehr erfahren',
@@ -1196,6 +1216,16 @@ const resources = {
       'services.aiSolutions.features.dataProcessing': 'معالجة البيانات الذكية',
       'services.aiSolutions.features.businessIntelligence': 'ذكاء الأعمال الذكي',
       
+      // Blockchain Solutions
+      'services.blockchainSolutions.title': 'حلول البلوك تشين',
+      'services.blockchainSolutions.description': 'حلول تقنية البلوك تشين الآمنة لتطبيقات المؤسسات والعقود الذكية والأنظمة اللامركزية.',
+      'services.blockchainSolutions.features.smartContracts': 'تطوير العقود الذكية',
+      'services.blockchainSolutions.features.dApps': 'التطبيقات اللامركزية',
+      'services.blockchainSolutions.features.crypto': 'تكامل العملات المشفرة',
+      'services.blockchainSolutions.features.consulting': 'استشارات البلوك تشين',
+      'services.blockchainSolutions.features.audits': 'عمليات تدقيق الأمان',
+      'services.blockchainSolutions.features.tokens': 'تطوير الرموز المميزة',
+      
       // Common keys
       'common.learnMore': 'اعرف المزيد',
       'common.getQuote': 'احصل على عرض سعر',
@@ -1651,6 +1681,16 @@ const resources = {
       'services.aiSolutions.features.dataProcessing': 'Traitement Intelligent des Données',
       'services.aiSolutions.features.businessIntelligence': 'Intelligence d\'Affaires Intelligente',
       
+      // Blockchain Solutions
+      'services.blockchainSolutions.title': 'Solutions Blockchain',
+      'services.blockchainSolutions.description': 'Solutions de technologie blockchain sécurisées pour les applications d\'entreprise, les contrats intelligents et les systèmes décentralisés.',
+      'services.blockchainSolutions.features.smartContracts': 'Développement de Contrats Intelligents',
+      'services.blockchainSolutions.features.dApps': 'Applications Décentralisées',
+      'services.blockchainSolutions.features.crypto': 'Intégration de Cryptomonnaies',
+      'services.blockchainSolutions.features.consulting': 'Conseil Blockchain',
+      'services.blockchainSolutions.features.audits': 'Audits de Sécurité',
+      'services.blockchainSolutions.features.tokens': 'Développement de Tokens',
+      
       // Common keys
       'common.learnMore': 'En savoir plus',
       'common.getQuote': 'Obtenir un devis',
@@ -2105,6 +2145,16 @@ const resources = {
       'services.aiSolutions.features.automation': 'Automatización Impulsada por IA',
       'services.aiSolutions.features.dataProcessing': 'Procesamiento Inteligente de Datos',
       'services.aiSolutions.features.businessIntelligence': 'Inteligencia de Negocios Inteligente',
+      
+      // Blockchain Solutions
+      'services.blockchainSolutions.title': 'Soluciones Blockchain',
+      'services.blockchainSolutions.description': 'Soluciones de tecnología blockchain seguras para aplicaciones empresariales, contratos inteligentes y sistemas descentralizados.',
+      'services.blockchainSolutions.features.smartContracts': 'Desarrollo de Contratos Inteligentes',
+      'services.blockchainSolutions.features.dApps': 'Aplicaciones Descentralizadas',
+      'services.blockchainSolutions.features.crypto': 'Integración de Criptomonedas',
+      'services.blockchainSolutions.features.consulting': 'Consultoría Blockchain',
+      'services.blockchainSolutions.features.audits': 'Auditorías de Seguridad',
+      'services.blockchainSolutions.features.tokens': 'Desarrollo de Tokens',
       
       // Common keys
       'common.learnMore': 'Saber más',

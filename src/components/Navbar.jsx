@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Globe, ChevronDown } from 'lucide-react';
+import { Menu, X, Globe, ChevronDown, Shield, Users, Server, Code, Cloud, Network, Briefcase, BarChart3, Lock } from 'lucide-react';
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
   const location = useLocation();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
 
   const languages = [
     { code: 'en', name: 'English', flag: '🇺🇸' },
@@ -30,6 +32,28 @@ const Navbar = () => {
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
     setIsLanguageOpen(false);
+  };
+
+  const services = [
+    { id: 'cybersecurity', icon: Shield, title: t('services.cybersecurity.title') },
+    { id: 'it-support', icon: Globe, title: t('services.itSupport.title') },
+    { id: 'on-site', icon: Users, title: t('services.onSite.title') },
+    { id: 'web-development', icon: Code, title: t('services.webDev.title') },
+    { id: 'erp', icon: Server, title: t('services.erp.title') },
+    { id: 'cloud', icon: Cloud, title: t('services.cloud.title') },
+    { id: 'backup', icon: Server, title: t('services.backup.title') },
+    { id: 'network', icon: Network, title: t('services.network.title') },
+    { id: 'software', icon: Briefcase, title: t('services.software.title') },
+    { id: 'consulting', icon: Briefcase, title: t('services.consulting.title') },
+    { id: 'ai-solutions', icon: BarChart3, title: t('services.aiSolutions.title') },
+    { id: 'blockchain-solutions', icon: Lock, title: t('services.blockchainSolutions.title') },
+  ];
+
+  const handleServiceClick = (serviceId) => {
+    console.log('Service clicked:', serviceId); // Debug log
+    navigate(`/services?service=${serviceId}`);
+    setIsServicesOpen(false);
+    setIsOpen(false);
   };
 
   const navItems = [
@@ -57,15 +81,54 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`text-text-primary-600 hover:text-accent-500 transition-colors duration-300 ${
-                  location.pathname === item.path ? 'text-accent-500 font-semibold' : ''
-                }`}
-              >
-                {item.label}
-              </Link>
+              <div key={item.path} className="relative">
+                {item.path === '/services' ? (
+                  <div className="relative">
+                    <button
+                      onClick={() => setIsServicesOpen(!isServicesOpen)}
+                      className={`flex items-center space-x-1 text-text-primary-600 hover:text-accent-500 transition-colors duration-300 ${
+                        location.pathname === item.path ? 'text-accent-500 font-semibold' : ''
+                      }`}
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown className="w-4 h-4" />
+                    </button>
+                    
+                    <AnimatePresence>
+                      {isServicesOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          className="absolute top-full left-0 mt-2 w-80 bg-primary-500 rounded-lg shadow-lg border border-accent-500/20 py-2 z-50"
+                        >
+                          <div className="grid grid-cols-1 gap-1">
+                            {services.map((service) => (
+                              <button
+                                key={service.id}
+                                onClick={() => handleServiceClick(service.id)}
+                                className="w-full text-left px-4 py-3 hover:bg-accent-500/10 transition-colors duration-300 flex items-center space-x-3"
+                              >
+                                <service.icon className="w-5 h-5 text-accent-500" />
+                                <span className="text-text-primary-600">{service.title}</span>
+                              </button>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <Link
+                    to={item.path}
+                    className={`text-text-primary-600 hover:text-accent-500 transition-colors duration-300 ${
+                      location.pathname === item.path ? 'text-accent-500 font-semibold' : ''
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </div>
             ))}
           </div>
 
@@ -129,16 +192,52 @@ const Navbar = () => {
               className="md:hidden border-t border-accent-500/20 py-4"
             >
               {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`block py-3 text-text-primary-600 hover:text-accent-500 transition-colors duration-300 ${
-                    location.pathname === item.path ? 'text-accent-500 font-semibold' : ''
-                  }`}
-                >
-                  {item.label}
-                </Link>
+                <div key={item.path}>
+                  {item.path === '/services' ? (
+                    <div>
+                      <button
+                        onClick={() => setIsServicesOpen(!isServicesOpen)}
+                        className={`block py-3 text-text-primary-600 hover:text-accent-500 transition-colors duration-300 w-full text-left ${
+                          location.pathname === item.path ? 'text-accent-500 font-semibold' : ''
+                        }`}
+                      >
+                        {item.label} <ChevronDown className="w-4 h-4 inline ml-1" />
+                      </button>
+                      
+                      <AnimatePresence>
+                        {isServicesOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="ml-4 mt-2 space-y-2"
+                          >
+                            {services.map((service) => (
+                              <button
+                                key={service.id}
+                                onClick={() => handleServiceClick(service.id)}
+                                className="block w-full text-left py-2 px-4 text-text-primary-600 hover:text-accent-500 transition-colors duration-300 flex items-center space-x-3"
+                              >
+                                <service.icon className="w-4 h-4 text-accent-500" />
+                                <span>{service.title}</span>
+                              </button>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ) : (
+                    <Link
+                      to={item.path}
+                      onClick={() => setIsOpen(false)}
+                      className={`block py-3 text-text-primary-600 hover:text-accent-500 transition-colors duration-300 ${
+                        location.pathname === item.path ? 'text-accent-500 font-semibold' : ''
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+                </div>
               ))}
             </motion.div>
           )}

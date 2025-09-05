@@ -1,6 +1,7 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSimpleTranslation } from '../hooks/useSimpleTranslation';
+import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Shield, 
@@ -24,7 +25,17 @@ import {
 const Services = () => {
   const { t } = useTranslation();
   const { createTranslatedText, createTranslatedArray } = useSimpleTranslation('services');
+  const [searchParams, setSearchParams] = useSearchParams();
   const [activeService, setActiveService] = useState('cybersecurity');
+
+  // Handle URL parameter for service selection
+  useEffect(() => {
+    const serviceParam = searchParams.get('service');
+    if (serviceParam) {
+      console.log('Service from URL:', serviceParam); // Debug log
+      setActiveService(serviceParam);
+    }
+  }, [searchParams]);
 
   const services = useMemo(() => [
     {
