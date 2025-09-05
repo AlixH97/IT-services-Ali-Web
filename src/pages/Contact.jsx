@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
@@ -20,12 +20,12 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState(null);
 
   const schema = yup.object({
-    name: yup.string().required('Name is required'),
-    email: yup.string().email('Invalid email format').required('Email is required'),
-    phone: yup.string().required('Phone number is required'),
-    service: yup.string().required('Please select a service'),
-    language: yup.string().required('Please select a language'),
-    message: yup.string().required('Message is required').min(10, 'Message must be at least 10 characters')
+    name: yup.string().required(t('contact.validation.name')),
+    email: yup.string().email(t('contact.validation.emailFormat')).required(t('contact.validation.email')),
+    phone: yup.string().required(t('contact.validation.phone')),
+    service: yup.string().required(t('contact.validation.service')),
+    language: yup.string().required(t('contact.validation.language')),
+    message: yup.string().required(t('contact.validation.message')).min(10, t('contact.validation.messageMin'))
   });
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
@@ -52,53 +52,53 @@ const Contact = () => {
     }
   };
 
-  const services = [
-    'IT Support & Maintenance',
-    'Cybersecurity Solutions',
-    'On-Site Support',
-    'Website Development',
-    'ERP Implementation',
-    'Cloud Services',
-    'Data Backup & Recovery',
-    'Network Setup & Management',
-    'Software Development',
-    'IT Consulting'
-  ];
+  const services = useMemo(() => [
+    t('services.itSupport.title'),
+    t('services.cybersecurity.title'),
+    t('services.onSite.title'),
+    t('services.webDev.title'),
+    t('services.erp.title'),
+    t('services.cloud.title'),
+    t('services.backup.title'),
+    t('services.network.title'),
+    t('services.software.title'),
+    t('services.consulting.title')
+  ], [t]);
 
-  const languages = [
-    { code: 'en', name: 'English' },
-    { code: 'de', name: 'Deutsch' },
-    { code: 'ar', name: 'العربية' },
-    { code: 'fr', name: 'Français' },
-    { code: 'es', name: 'Español' }
-  ];
+  const languages = useMemo(() => [
+    { code: 'en', name: t('languages.english') },
+    { code: 'de', name: t('languages.german') },
+    { code: 'ar', name: t('languages.arabic') },
+    { code: 'fr', name: t('languages.french') },
+    { code: 'es', name: t('languages.spanish') }
+  ], [t]);
 
-  const contactInfo = [
+  const contactInfo = useMemo(() => [
     {
       icon: MapPin,
       title: t('contact.info.address'),
-      content: 'Musterstraße 123, 10115 Berlin, Germany',
+      content: t('contact.info.addressValue'),
       color: 'from-blue-500 to-cyan-600'
     },
     {
       icon: Phone,
       title: t('contact.info.phone'),
-      content: '+49 30 12345678',
+      content: t('contact.info.phoneValue'),
       color: 'from-green-500 to-emerald-600'
     },
     {
       icon: Mail,
       title: t('contact.info.email'),
-      content: 'info@itservices.com',
+      content: t('contact.info.emailValue'),
       color: 'from-purple-500 to-indigo-600'
     },
     {
       icon: Clock,
       title: t('contact.info.hours'),
-      content: 'Mon-Fri: 9:00 AM - 6:00 PM CET',
+      content: t('contact.info.hoursValue'),
       color: 'from-orange-500 to-red-600'
     }
-  ];
+  ], [t]);
 
   return (
     <div className="pt-20">
@@ -132,7 +132,7 @@ const Contact = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Send us a Message</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">{t('contact.form.title')}</h2>
               
               {submitStatus === 'success' && (
                 <motion.div
@@ -141,7 +141,7 @@ const Contact = () => {
                   className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center space-x-3"
                 >
                   <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="text-green-800">Thank you! Your message has been sent successfully.</span>
+                  <span className="text-green-800">{t('contact.form.success')}</span>
                 </motion.div>
               )}
 
@@ -152,7 +152,7 @@ const Contact = () => {
                   className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center space-x-3"
                 >
                   <AlertCircle className="w-5 h-5 text-red-600" />
-                  <span className="text-red-800">An error occurred. Please try again.</span>
+                  <span className="text-red-800">{t('contact.form.error')}</span>
                 </motion.div>
               )}
 
@@ -168,7 +168,7 @@ const Contact = () => {
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent ${
                         errors.name ? 'border-red-300' : 'border-gray-300'
                       }`}
-                      placeholder="Your full name"
+                      placeholder={t('contact.form.namePlaceholder')}
                     />
                     {errors.name && (
                       <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
@@ -185,7 +185,7 @@ const Contact = () => {
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent ${
                         errors.email ? 'border-red-300' : 'border-gray-300'
                       }`}
-                      placeholder="your.email@example.com"
+                      placeholder={t('contact.form.emailPlaceholder')}
                     />
                     {errors.email && (
                       <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
@@ -204,7 +204,7 @@ const Contact = () => {
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent ${
                         errors.phone ? 'border-red-300' : 'border-gray-300'
                       }`}
-                      placeholder="+49 30 12345678"
+                      placeholder={t('contact.form.phonePlaceholder')}
                     />
                     {errors.phone && (
                       <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
@@ -221,7 +221,7 @@ const Contact = () => {
                         errors.service ? 'border-red-300' : 'border-gray-300'
                       }`}
                     >
-                      <option value="">Select a service</option>
+                      <option value="">{t('contact.form.selectService')}</option>
                       {services.map((service, index) => (
                         <option key={index} value={service}>{service}</option>
                       ))}
@@ -242,7 +242,7 @@ const Contact = () => {
                       errors.language ? 'border-red-300' : 'border-gray-300'
                     }`}
                   >
-                    <option value="">Select preferred language</option>
+                    <option value="">{t('contact.form.selectLanguage')}</option>
                     {languages.map((language) => (
                       <option key={language.code} value={language.code}>{language.name}</option>
                     ))}
@@ -262,7 +262,7 @@ const Contact = () => {
                     className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent ${
                       errors.message ? 'border-red-300' : 'border-gray-300'
                     }`}
-                    placeholder="Tell us about your project or inquiry..."
+                    placeholder={t('contact.form.messagePlaceholder')}
                   />
                   {errors.message && (
                     <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
@@ -277,7 +277,7 @@ const Contact = () => {
                   {isSubmitting ? (
                     <>
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      <span>Sending...</span>
+                      <span>{t('contact.form.sending')}</span>
                     </>
                   ) : (
                     <>
@@ -321,12 +321,12 @@ const Contact = () => {
 
               {/* Map Placeholder */}
               <div className="mt-8">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Office Location</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('contact.map.title')}</h3>
                 <div className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
                   <div className="text-center text-gray-500">
                     <MapPin className="w-12 h-12 mx-auto mb-2" />
-                    <p>Interactive Map</p>
-                    <p className="text-sm">Berlin, Germany</p>
+                    <p>{t('contact.map.interactive')}</p>
+                    <p className="text-sm">{t('contact.map.location')}</p>
                   </div>
                 </div>
               </div>
@@ -346,34 +346,34 @@ const Contact = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Other Ways to Reach Us
+              {t('contact.methods.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We're here to help and answer any questions you might have.
+              {t('contact.methods.subtitle')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
+            {useMemo(() => [
               {
-                title: 'Live Chat',
-                description: 'Chat with our support team in real-time during business hours.',
-                action: 'Start Chat',
+                title: t('contact.methods.liveChat.title'),
+                description: t('contact.methods.liveChat.description'),
+                action: t('contact.methods.liveChat.action'),
                 color: 'from-green-500 to-emerald-600'
               },
               {
-                title: 'Video Call',
-                description: 'Schedule a video consultation with our technical experts.',
-                action: 'Book Meeting',
+                title: t('contact.methods.videoCall.title'),
+                description: t('contact.methods.videoCall.description'),
+                action: t('contact.methods.videoCall.action'),
                 color: 'from-blue-500 to-cyan-600'
               },
               {
-                title: 'Emergency Support',
-                description: '24/7 emergency support for critical IT issues.',
-                action: 'Call Now',
+                title: t('contact.methods.emergency.title'),
+                description: t('contact.methods.emergency.description'),
+                action: t('contact.methods.emergency.action'),
                 color: 'from-red-500 to-pink-600'
               }
-            ].map((method, index) => (
+            ], [t]).map((method, index) => (
               <motion.div
                 key={index}
                 className="text-center p-8 bg-white rounded-2xl shadow-lg"
@@ -408,32 +408,32 @@ const Contact = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Frequently Asked Questions
+              {t('contact.faq.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Get quick answers to common questions about our services and processes.
+              {t('contact.faq.subtitle')}
             </p>
           </motion.div>
 
           <div className="max-w-4xl mx-auto space-y-6">
-            {[
+            {useMemo(() => [
               {
-                question: 'What is your typical response time for support requests?',
-                answer: 'We aim to respond to all support requests within 2 hours during business hours, and within 4 hours for after-hours requests.'
+                question: t('contact.faq.responseTime.question'),
+                answer: t('contact.faq.responseTime.answer')
               },
               {
-                question: 'Do you provide services in multiple languages?',
-                answer: 'Yes, we provide services in English, German, Arabic, French, and Spanish to better serve our diverse client base.'
+                question: t('contact.faq.languages.question'),
+                answer: t('contact.faq.languages.answer')
               },
               {
-                question: 'What security measures do you implement?',
-                answer: 'We implement enterprise-grade security measures including encryption, multi-factor authentication, and regular security audits to ensure your data is protected.'
+                question: t('contact.faq.security.question'),
+                answer: t('contact.faq.security.answer')
               },
               {
-                question: 'Can you work with our existing IT infrastructure?',
-                answer: 'Absolutely! We specialize in integrating with existing systems and can work with virtually any IT infrastructure to enhance and optimize your setup.'
+                question: t('contact.faq.infrastructure.question'),
+                answer: t('contact.faq.infrastructure.answer')
               }
-            ].map((faq, index) => (
+            ], [t]).map((faq, index) => (
               <motion.div
                 key={index}
                 className="bg-gray-50 rounded-xl p-6"

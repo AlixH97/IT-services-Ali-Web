@@ -18,35 +18,18 @@ const PrivacyPolicy = () => {
   const sections = [
     {
       icon: Shield,
-      title: 'Information We Collect',
-      content: `We collect information you provide directly to us, such as when you fill out our contact forms, request services, or communicate with us. This may include:
-      • Personal identification information (name, email address, phone number)
-      • Company information (company name, job title, industry)
-      • Service preferences and requirements
-      • Communication history and correspondence
-      • Technical information about your IT infrastructure (when providing services)`
+      title: t('privacy.sections.collect.title'),
+      content: t('privacy.sections.collect.content')
     },
     {
       icon: Database,
-      title: 'How We Use Your Information',
-      content: `We use the information we collect to:
-      • Provide and improve our IT services
-      • Communicate with you about our services
-      • Send you technical updates and security alerts
-      • Process payments and invoices
-      • Comply with legal obligations
-      • Protect against fraud and security threats
-      • Provide customer support and respond to inquiries`
+      title: t('privacy.sections.use.title'),
+      content: t('privacy.sections.use.content')
     },
     {
       icon: Lock,
-      title: 'Data Security and Protection',
-      content: `We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include:
-      • Encryption of data in transit and at rest
-      • Regular security assessments and updates
-      • Access controls and authentication measures
-      • Employee training on data protection
-      • Incident response and breach notification procedures`
+      title: t('privacy.sections.security.title'),
+      content: t('privacy.sections.security.content')
     },
     {
       icon: UserCheck,
@@ -215,9 +198,9 @@ const PrivacyPolicy = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h4 className="font-semibold text-yellow-800 mb-2">Policy Updates</h4>
+              <h4 className="font-semibold text-yellow-800 mb-2">{t('privacy.sections.updates.title')}</h4>
               <p className="text-yellow-700">
-                We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any material changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.
+                {t('privacy.sections.updates.content')}
               </p>
             </motion.div>
           </div>

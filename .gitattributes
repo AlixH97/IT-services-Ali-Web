@@ -16,7 +16,6 @@
 
 # Force CRLF line endings for Windows batch files
 *.bat text eol=crlf
-*.cmd text eol=crlf
 
 # Binary files
 *.png binary
@@ -29,9 +28,3 @@
 *.woff2 binary
 *.ttf binary
 *.eot binary
-*.otf binary
-
-# Ensure these files are always treated as text
-package.json text
-package-lock.json text
-yarn.lock text

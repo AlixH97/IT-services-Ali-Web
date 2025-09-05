@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -19,7 +19,7 @@ import {
 const Home = () => {
   const { t } = useTranslation();
 
-  const services = [
+  const services = useMemo(() => [
     {
       icon: Shield,
       title: t('services.cybersecurity.title'),
@@ -62,51 +62,62 @@ const Home = () => {
       color: 'from-indigo-500 to-purple-600',
       link: '/services#cloud'
     }
-  ];
+  ], [t]);
 
-  const stats = [
-    { number: '15+', label: t('about.experience') },
-    { number: '500+', label: t('about.clients') },
-    { number: '1000+', label: t('about.projects') },
-    { number: '50+', label: t('about.team') }
-  ];
+  const stats = useMemo(() => [
+    { number: '15+', label: t('home.stats.yearsExperience') },
+    { number: '500+', label: t('home.stats.happyClients') },
+    { number: '1000+', label: t('home.stats.completedProjects') },
+    { number: '50+', label: t('home.stats.expertTeam') }
+  ], [t]);
 
-  const features = [
-    'GDPR Compliant Solutions',
-    '24/7 Support Available',
-    'Local Expertise',
-    'Multi-Language Support',
-    'Certified Professionals',
-    'ISO 27001 Certified'
-  ];
+  const features = useMemo(() => [
+    t('home.features.gdpr'),
+    t('home.features.support'),
+    t('home.features.expertise'),
+    t('home.features.multilingual'),
+    t('home.features.certified'),
+    t('home.features.iso')
+  ], [t]);
 
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 via-white to-secondary-50 overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-bounce-slow"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-bounce-slow" style={{ animationDelay: '1s' }}></div>
-        </div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80)'
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/70 to-primary/90"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
 
-        <div className="container-custom text-center relative z-10">
+        <div className="container-custom text-center relative z-10 text-white">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               {t('hero.title')}
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed">
               {t('hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="btn-primary">
+              <Link 
+                to="/contact" 
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-accent to-accent-dark hover:from-accent-dark hover:to-accent text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
                 {t('hero.cta')}
+                <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
-              <Link to="/services" className="btn-secondary">
+              <Link 
+                to="/services" 
+                className="inline-flex items-center px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-primary font-semibold rounded-lg transition-all duration-300 transform hover:scale-105"
+              >
                 {t('hero.learnMore')}
               </Link>
             </div>
@@ -115,7 +126,7 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-gradient-to-r from-primary-light to-primary-dark">
         <div className="container-custom">
           <motion.div 
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
@@ -126,10 +137,10 @@ const Home = () => {
           >
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-primary-600 mb-2">
+                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">
                   {stat.number}
                 </div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
+                <div className="text-text-primary font-medium">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -137,7 +148,7 @@ const Home = () => {
       </section>
 
       {/* Services Overview */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="container-custom">
           <motion.div
             className="text-center mb-16"
@@ -146,7 +157,7 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
               {t('services.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -158,17 +169,17 @@ const Home = () => {
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                className="card p-6 group cursor-pointer"
+                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 group cursor-pointer"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
               >
-                <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md`}>
                   <service.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-primary mb-3">
                   {service.title}
                 </h3>
                 <p className="text-gray-600 mb-4 leading-relaxed">
@@ -176,7 +187,7 @@ const Home = () => {
                 </p>
                 <Link 
                   to={service.link}
-                  className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium group-hover:translate-x-1 transition-transform duration-300"
+                  className="inline-flex items-center text-accent hover:text-accent-dark font-medium group-hover:translate-x-1 transition-all duration-300"
                 >
                   {t('common.learnMore')}
                   <ArrowRight className="w-4 h-4 ml-2" />
@@ -210,10 +221,10 @@ const Home = () => {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Why Choose Our IT Services?
+                {t('home.whyChoose.title')}
               </h2>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                We combine cutting-edge technology with local market expertise to deliver solutions that drive real business value.
+                {t('home.whyChoose.description')}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {features.map((feature, index) => (
@@ -256,14 +267,14 @@ const Home = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold text-white mb-6">
-              Ready to Transform Your Business?
+              {t('home.cta.title')}
             </h2>
             <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-              Let's discuss how our IT solutions can help you achieve your business goals and stay ahead of the competition.
+              {t('home.cta.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-                {t('nav.contact')} {t('nav.about')}
+                {t('home.cta.contactUs')}
               </Link>
               <Link to="/services" className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
                 {t('common.viewAll')} {t('nav.services')}

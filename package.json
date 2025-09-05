@@ -7,7 +7,10 @@
     "build": "vite build",
     "preview": "vite preview",
     "start": "vite",
-    "postinstall": "rm -rf node_modules/.vite"
+    "postinstall": "rm -rf node_modules/.vite",
+    "translate": "node scripts/generate-translations.js",
+    "translate:watch": "npm run translate && npm run dev",
+    "translate:check": "node scripts/generate-translations.js --check-only"
   },
   "keywords": ["IT services", "cybersecurity", "ERP", "cloud services", "multilingual"],
   "author": "IT Services Company",

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { 
@@ -15,64 +15,64 @@ import {
 const About = () => {
   const { t } = useTranslation();
 
-  const values = [
+  const values = useMemo(() => [
     {
       icon: Shield,
-      title: 'Trust & Security',
-      description: 'We prioritize data security and compliance, ensuring your business information is always protected.'
+      title: t('about.values.trust.title'),
+      description: t('about.values.trust.description')
     },
     {
       icon: Globe,
-      title: 'Global Expertise',
-      description: 'Local knowledge with international standards, serving businesses across Europe and the Middle East.'
+      title: t('about.values.global.title'),
+      description: t('about.values.global.description')
     },
     {
       icon: Lightbulb,
-      title: 'Innovation',
-      description: 'Constantly evolving our solutions to incorporate the latest technologies and best practices.'
+      title: t('about.values.innovation.title'),
+      description: t('about.values.innovation.description')
     },
     {
       icon: Users,
-      title: 'Customer Focus',
-      description: 'Your success is our priority. We build long-term partnerships based on trust and results.'
+      title: t('about.values.customer.title'),
+      description: t('about.values.customer.description')
     }
-  ];
+  ], [t]);
 
-  const milestones = [
-    { year: '2009', title: 'Company Founded', description: 'Started as a small IT consulting firm in Germany' },
-    { year: '2012', title: 'European Expansion', description: 'Extended services to neighboring European countries' },
-    { year: '2015', title: 'Saudi Arabia Office', description: 'Opened our first office in Riyadh, Saudi Arabia' },
-    { year: '2018', title: 'Cybersecurity Focus', description: 'Launched specialized cybersecurity division' },
-    { year: '2021', title: 'Cloud Services', description: 'Expanded into cloud migration and management services' },
-    { year: '2024', title: 'Digital Transformation', description: 'Leading digital transformation initiatives across markets' }
-  ];
+  const milestones = useMemo(() => [
+    { year: '2009', title: t('about.milestones.founded.title'), description: t('about.milestones.founded.description') },
+    { year: '2012', title: t('about.milestones.european.title'), description: t('about.milestones.european.description') },
+    { year: '2015', title: t('about.milestones.saudi.title'), description: t('about.milestones.saudi.description') },
+    { year: '2018', title: t('about.milestones.cybersecurity.title'), description: t('about.milestones.cybersecurity.description') },
+    { year: '2021', title: t('about.milestones.cloud.title'), description: t('about.milestones.cloud.description') },
+    { year: '2024', title: t('about.milestones.digital.title'), description: t('about.milestones.digital.description') }
+  ], [t]);
 
-  const team = [
+  const team = useMemo(() => [
     {
-      name: 'Dr. Michael Weber',
-      position: 'CEO & Founder',
+      name: t('about.team.ceo.name'),
+      position: t('about.team.ceo.position'),
       image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-      description: '20+ years in IT consulting with expertise in European markets'
+      description: t('about.team.ceo.description')
     },
     {
-      name: 'Ahmed Al-Rashid',
-      position: 'CTO',
+      name: t('about.team.cto.name'),
+      position: t('about.team.cto.position'),
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-      description: 'Leading technology strategy and innovation initiatives'
+      description: t('about.team.cto.description')
     },
     {
-      name: 'Sarah Müller',
-      position: 'Head of Operations',
+      name: t('about.team.operations.name'),
+      position: t('about.team.operations.position'),
       image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-      description: 'Expert in process optimization and client relationship management'
+      description: t('about.team.operations.description')
     },
     {
-      name: 'Carlos Rodriguez',
-      position: 'Head of Cybersecurity',
+      name: t('about.team.security.name'),
+      position: t('about.team.security.position'),
       image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-      description: 'Specialized in GDPR compliance and data protection'
+      description: t('about.team.security.description')
     }
-  ];
+  ], [t]);
 
   return (
     <div className="pt-20">
@@ -106,13 +106,13 @@ const About = () => {
               viewport={{ once: true }}
             >
               <div className="mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Mission</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('about.missionTitle')}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed">
                   {t('about.mission')}
                 </p>
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Vision</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('about.visionTitle')}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed">
                   {t('about.vision')}
                 </p>
@@ -146,9 +146,9 @@ const About = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Core Values</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">{t('about.valuesTitle')}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              The principles that guide everything we do and every decision we make.
+              {t('about.valuesDescription')}
             </p>
           </motion.div>
 
@@ -183,9 +183,9 @@ const About = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Journey</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">{t('about.journeyTitle')}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From humble beginnings to becoming a leading IT services provider across multiple markets.
+              {t('about.journeyDescription')}
             </p>
           </motion.div>
 
@@ -233,9 +233,9 @@ const About = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Meet Our Leadership Team</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">{t('about.teamTitle')}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Experienced professionals dedicated to delivering exceptional IT solutions and driving innovation.
+              {t('about.teamDescription')}
             </p>
           </motion.div>
 
@@ -276,9 +276,9 @@ const About = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Certifications & Awards</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">{t('about.certificationsTitle')}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our commitment to excellence is recognized through various industry certifications and awards.
+              {t('about.certificationsDescription')}
             </p>
           </motion.div>
 
@@ -291,8 +291,8 @@ const About = () => {
               viewport={{ once: true }}
             >
               <Award className="w-16 h-16 text-primary-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">ISO 27001 Certified</h3>
-              <p className="text-gray-600">Information Security Management System certification</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">{t('about.certifications.iso.title')}</h3>
+              <p className="text-gray-600">{t('about.certifications.iso.description')}</p>
             </motion.div>
 
             <motion.div
@@ -303,8 +303,8 @@ const About = () => {
               viewport={{ once: true }}
             >
               <Shield className="w-16 h-16 text-secondary-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">GDPR Compliant</h3>
-              <p className="text-gray-600">Full compliance with European data protection regulations</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">{t('about.certifications.gdpr.title')}</h3>
+              <p className="text-gray-600">{t('about.certifications.gdpr.description')}</p>
             </motion.div>
 
             <motion.div
@@ -315,8 +315,8 @@ const About = () => {
               viewport={{ once: true }}
             >
               <Target className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Microsoft Gold Partner</h3>
-              <p className="text-gray-600">Recognized expertise in Microsoft technologies and solutions</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">{t('about.certifications.microsoft.title')}</h3>
+              <p className="text-gray-600">{t('about.certifications.microsoft.description')}</p>
             </motion.div>
           </div>
         </div>
@@ -332,17 +332,17 @@ const About = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold text-white mb-6">
-              Ready to Work With Our Team?
+              {t('about.cta.title')}
             </h2>
             <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-              Let's discuss how our experienced team can help transform your business with innovative IT solutions.
+              {t('about.cta.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/contact" className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-                Get Started Today
+                {t('about.cta.getStarted')}
               </a>
               <a href="/services" className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
-                Explore Our Services
+                {t('about.cta.exploreServices')}
               </a>
             </div>
           </motion.div>

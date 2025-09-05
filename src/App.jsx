@@ -14,17 +14,28 @@ import TermsOfService from './pages/TermsOfService';
 function App() {
   const { i18n } = useTranslation();
   
-  // Set RTL for Arabic
+  // Set RTL for Arabic and update language attribute
   React.useEffect(() => {
-    if (i18n.language === 'ar') {
+    const currentLanguage = i18n.language;
+    
+    // Set direction
+    if (currentLanguage === 'ar') {
       document.documentElement.dir = 'rtl';
     } else {
       document.documentElement.dir = 'ltr';
     }
+    
+    // Set language attribute
+    document.documentElement.lang = currentLanguage;
+    
+    // Force re-render of all components by updating a state
+    // This ensures all components re-render when language changes
+    const event = new CustomEvent('languageChanged', { detail: currentLanguage });
+    window.dispatchEvent(event);
   }, [i18n.language]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-primary text-text-primary">
       <Navbar />
       <main>
         <Routes>

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSimpleTranslation } from '../hooks/useSimpleTranslation';
 import { motion } from 'framer-motion';
 import { 
   Shield, 
@@ -22,9 +23,10 @@ import {
 
 const Services = () => {
   const { t } = useTranslation();
+  const { createTranslatedText, createTranslatedArray } = useSimpleTranslation('services');
   const [activeService, setActiveService] = useState('cybersecurity');
 
-  const services = [
+  const services = useMemo(() => [
     {
       id: 'cybersecurity',
       icon: Shield,
@@ -32,14 +34,14 @@ const Services = () => {
       description: t('services.cybersecurity.description'),
       color: 'from-red-500 to-pink-600',
       features: [
-        'Advanced threat detection and prevention',
-        'GDPR compliance for European markets',
-        'Data sovereignty solutions for Saudi Arabia',
-        '24/7 security monitoring',
-        'Incident response and recovery',
-        'Security awareness training',
-        'Penetration testing and vulnerability assessment',
-        'Compliance audits and reporting'
+        t('services.cybersecurity.features.threatDetection'),
+        t('services.cybersecurity.features.gdpr'),
+        t('services.cybersecurity.features.dataSovereignty'),
+        t('services.cybersecurity.features.monitoring'),
+        t('services.cybersecurity.features.incidentResponse'),
+        t('services.cybersecurity.features.training'),
+        t('services.cybersecurity.features.penetrationTesting'),
+        t('services.cybersecurity.features.audits')
       ],
       image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     },
@@ -50,14 +52,14 @@ const Services = () => {
       description: t('services.itSupport.description'),
       color: 'from-blue-500 to-cyan-600',
       features: [
-        '24/7 remote and on-site support',
-        'Proactive system monitoring',
-        'Hardware and software troubleshooting',
-        'Network connectivity issues',
-        'Email and communication systems',
-        'Backup and recovery assistance',
-        'System updates and maintenance',
-        'User training and documentation'
+        t('services.itSupport.features.support'),
+        t('services.itSupport.features.monitoring'),
+        t('services.itSupport.features.troubleshooting'),
+        t('services.itSupport.features.network'),
+        t('services.itSupport.features.email'),
+        t('services.itSupport.features.backup'),
+        t('services.itSupport.features.maintenance'),
+        t('services.itSupport.features.training')
       ],
       image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     },
@@ -68,14 +70,14 @@ const Services = () => {
       description: t('services.onSite.description'),
       color: 'from-green-500 to-emerald-600',
       features: [
-        'Local technicians across Germany and Saudi Arabia',
-        'Same-day response for critical issues',
-        'Hardware installation and configuration',
-        'Network infrastructure setup',
-        'Security system installation',
-        'Equipment maintenance and repair',
-        'On-site training and consultation',
-        'Emergency response services'
+        t('services.onSite.features.technicians'),
+        t('services.onSite.features.response'),
+        t('services.onSite.features.installation'),
+        t('services.onSite.features.network'),
+        t('services.onSite.features.security'),
+        t('services.onSite.features.maintenance'),
+        t('services.onSite.features.training'),
+        t('services.onSite.features.emergency')
       ],
       image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     },
@@ -86,14 +88,14 @@ const Services = () => {
       description: t('services.webDev.description'),
       color: 'from-purple-500 to-indigo-600',
       features: [
-        'Responsive website design',
-        'E-commerce solutions',
-        'Custom web applications',
-        'Content management systems',
-        'SEO optimization',
-        'Performance optimization',
-        'Security implementation',
-        'Mobile app development'
+        t('services.webDev.features.design'),
+        t('services.webDev.features.ecommerce'),
+        t('services.webDev.features.applications'),
+        t('services.webDev.features.cms'),
+        t('services.webDev.features.seo'),
+        t('services.webDev.features.performance'),
+        t('services.webDev.features.security'),
+        t('services.webDev.features.mobile')
       ],
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     },
@@ -104,14 +106,14 @@ const Services = () => {
       description: t('services.erp.description'),
       color: 'from-orange-500 to-red-600',
       features: [
-        'SAP implementation and customization',
-        'Oracle ERP solutions',
-        'Microsoft Dynamics integration',
-        'Business process optimization',
-        'Data migration and conversion',
-        'User training and change management',
-        'Ongoing support and maintenance',
-        'Custom module development'
+        t('services.erp.features.sap'),
+        t('services.erp.features.oracle'),
+        t('services.erp.features.dynamics'),
+        t('services.erp.features.optimization'),
+        t('services.erp.features.migration'),
+        t('services.erp.features.training'),
+        t('services.erp.features.support'),
+        t('services.erp.features.custom')
       ],
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     },
@@ -122,14 +124,14 @@ const Services = () => {
       description: t('services.cloud.description'),
       color: 'from-indigo-500 to-purple-600',
       features: [
-        'Cloud migration strategy and planning',
-        'AWS, Azure, and Google Cloud expertise',
-        'Hybrid cloud solutions',
-        'Cloud security and compliance',
-        'Cost optimization and monitoring',
-        'Disaster recovery planning',
-        'Performance optimization',
-        'Multi-cloud management'
+        t('services.cloud.features.migration'),
+        t('services.cloud.features.expertise'),
+        t('services.cloud.features.hybrid'),
+        t('services.cloud.features.security'),
+        t('services.cloud.features.cost'),
+        t('services.cloud.features.disaster'),
+        t('services.cloud.features.performance'),
+        t('services.cloud.features.multicloud')
       ],
       image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     },
@@ -140,14 +142,14 @@ const Services = () => {
       description: t('services.backup.description'),
       color: 'from-teal-500 to-cyan-600',
       features: [
-        'Automated backup systems',
-        'Cloud and on-premise solutions',
-        'Disaster recovery planning',
-        'Data retention policies',
-        'Backup testing and validation',
-        'Compliance and audit support',
-        'Recovery time objectives (RTO)',
-        'Recovery point objectives (RPO)'
+        t('services.backup.features.automated'),
+        t('services.backup.features.solutions'),
+        t('services.backup.features.disaster'),
+        t('services.backup.features.retention'),
+        t('services.backup.features.testing'),
+        t('services.backup.features.compliance'),
+        t('services.backup.features.rto'),
+        t('services.backup.features.rpo')
       ],
       image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     },
@@ -158,14 +160,14 @@ const Services = () => {
       description: t('services.network.description'),
       color: 'from-yellow-500 to-orange-600',
       features: [
-        'Network design and architecture',
-        'Wireless network implementation',
-        'Network security and firewalls',
-        'VPN and remote access solutions',
-        'Network monitoring and management',
-        'Bandwidth optimization',
-        'Network performance analysis',
-        'Scalable infrastructure planning'
+        t('services.network.features.design'),
+        t('services.network.features.wireless'),
+        t('services.network.features.security'),
+        t('services.network.features.vpn'),
+        t('services.network.features.monitoring'),
+        t('services.network.features.bandwidth'),
+        t('services.network.features.performance'),
+        t('services.network.features.scalable')
       ],
       image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     },
@@ -176,14 +178,14 @@ const Services = () => {
       description: t('services.software.description'),
       color: 'from-pink-500 to-rose-600',
       features: [
-        'Custom software development',
-        'Mobile application development',
-        'API development and integration',
-        'Legacy system modernization',
-        'Quality assurance and testing',
-        'Agile development methodology',
-        'Continuous integration/deployment',
-        'Technical documentation'
+        t('services.software.features.custom'),
+        t('services.software.features.mobile'),
+        t('services.software.features.api'),
+        t('services.software.features.modernization'),
+        t('services.software.features.qa'),
+        t('services.software.features.agile'),
+        t('services.software.features.cicd'),
+        t('services.software.features.documentation')
       ],
       image: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     },
@@ -194,20 +196,57 @@ const Services = () => {
       description: t('services.consulting.description'),
       color: 'from-gray-500 to-slate-600',
       features: [
-        'Technology strategy and planning',
-        'Digital transformation consulting',
-        'IT infrastructure assessment',
-        'Security and compliance audits',
-        'Technology vendor selection',
-        'Project management consulting',
-        'Change management support',
-        'ROI analysis and business case development'
+        t('services.consulting.features.strategy'),
+        t('services.consulting.features.transformation'),
+        t('services.consulting.features.assessment'),
+        t('services.consulting.features.audits'),
+        t('services.consulting.features.vendor'),
+        t('services.consulting.features.project'),
+        t('services.consulting.features.change'),
+        t('services.consulting.features.roi')
       ],
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 'ai-solutions',
+      icon: BarChart3,
+      title: t('services.aiSolutions.title'),
+      description: t('services.aiSolutions.description'),
+      color: 'from-cyan-500 to-blue-600',
+      features: [
+        t('services.aiSolutions.features.machineLearning'),
+        t('services.aiSolutions.features.predictiveAnalytics'),
+        t('services.aiSolutions.features.automatedDecision'),
+        t('services.aiSolutions.features.naturalLanguage'),
+        t('services.aiSolutions.features.computerVision'),
+        t('services.aiSolutions.features.automation'),
+        t('services.aiSolutions.features.dataProcessing'),
+        t('services.aiSolutions.features.businessIntelligence')
+      ],
+      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 'blockchain-solutions',
+      icon: Lock,
+      title: createTranslatedText('Blockchain Solutions', 'title'),
+      description: createTranslatedText('Secure blockchain technology solutions for enterprise applications, smart contracts, and decentralized systems.', 'description'),
+      color: 'from-indigo-500 to-purple-600',
+      features: createTranslatedArray([
+        'Smart Contract Development',
+        'Decentralized Applications',
+        'Cryptocurrency Integration',
+        'Blockchain Consulting',
+        'Security Audits',
+        'Token Development'
+      ], 'features'),
+      image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     }
-  ];
+  ], [t]);
 
-  const activeServiceData = services.find(service => service.id === activeService);
+  const activeServiceData = useMemo(() => 
+    services.find(service => service.id === activeService), 
+    [services, activeService]
+  );
 
   return (
     <div className="pt-20">
@@ -285,10 +324,10 @@ const Services = () => {
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="btn-primary">
-                    Get Quote
+                    {t('common.getQuote')}
                   </button>
                   <button className="btn-secondary">
-                    Learn More
+                    {t('common.learnMore')}
                   </button>
                 </div>
               </div>
@@ -318,36 +357,36 @@ const Services = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Why Choose Our Services?
+              {t('services.whyChoose.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We deliver measurable results and long-term value for your business.
+              {t('services.whyChoose.description')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
+            {useMemo(() => [
               {
                 icon: Zap,
-                title: 'Fast Implementation',
-                description: 'Quick deployment with minimal disruption to your business operations.'
+                title: t('services.benefits.fastImplementation.title'),
+                description: t('services.benefits.fastImplementation.description')
               },
               {
                 icon: Lock,
-                title: 'Secure & Compliant',
-                description: 'Built-in security measures and compliance with local regulations.'
+                title: t('services.benefits.secureCompliant.title'),
+                description: t('services.benefits.secureCompliant.description')
               },
               {
                 icon: Monitor,
-                title: '24/7 Support',
-                description: 'Round-the-clock technical support and monitoring services.'
+                title: t('services.benefits.support24.title'),
+                description: t('services.benefits.support24.description')
               },
               {
                 icon: BarChart3,
-                title: 'Proven Results',
-                description: 'Track record of successful implementations and satisfied clients.'
+                title: t('services.benefits.provenResults.title'),
+                description: t('services.benefits.provenResults.description')
               }
-            ].map((benefit, index) => (
+            ], [t]).map((benefit, index) => (
               <motion.div
                 key={index}
                 className="text-center p-6 bg-white rounded-xl shadow-lg"
@@ -379,20 +418,20 @@ const Services = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Our Service Delivery Process
+              {t('services.process.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A structured approach to ensure successful project delivery and maximum value.
+              {t('services.process.description')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { step: '01', title: 'Discovery & Analysis', description: 'Understanding your requirements and current infrastructure.' },
-              { step: '02', title: 'Planning & Design', description: 'Creating detailed project plans and solution architecture.' },
-              { step: '03', title: 'Implementation', description: 'Executing the solution with quality assurance and testing.' },
-              { step: '04', title: 'Support & Optimization', description: 'Ongoing support and continuous improvement services.' }
-            ].map((process, index) => (
+            {useMemo(() => [
+              { step: '01', title: t('services.process.steps.discovery.title'), description: t('services.process.steps.discovery.description') },
+              { step: '02', title: t('services.process.steps.planning.title'), description: t('services.process.steps.planning.description') },
+              { step: '03', title: t('services.process.steps.implementation.title'), description: t('services.process.steps.implementation.description') },
+              { step: '04', title: t('services.process.steps.support.title'), description: t('services.process.steps.support.description') }
+            ], [t]).map((process, index) => (
               <motion.div
                 key={index}
                 className="text-center relative"
@@ -427,17 +466,17 @@ const Services = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold text-white mb-6">
-              Ready to Get Started?
+              {t('services.cta.title')}
             </h2>
             <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-              Contact us today to discuss your IT needs and get a customized solution for your business.
+              {t('services.cta.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/contact" className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-                Get Free Consultation
+                {t('services.cta.consultation')}
               </a>
               <a href="/contact" className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
-                Request Quote
+                {t('services.cta.quote')}
               </a>
             </div>
           </motion.div>

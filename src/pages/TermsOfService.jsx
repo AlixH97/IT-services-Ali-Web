@@ -154,12 +154,12 @@ const TermsOfService = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Agreement Overview</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('terms.overview.title')}</h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                These Terms of Service ("Terms") constitute a legally binding agreement between you and IT Services Company ("Company," "we," "us," or "our") regarding your use of our IT services, website, and related offerings.
+                {t('terms.overview.description1')}
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                By accessing or using our services, you acknowledge that you have read, understood, and agree to be bound by these Terms. If you are using our services on behalf of an organization, you represent that you have the authority to bind that organization to these Terms.
+                {t('terms.overview.description2')}
               </p>
             </motion.div>
 
@@ -260,9 +260,9 @@ const TermsOfService = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h4 className="font-semibold text-blue-800 mb-2">Terms Updates</h4>
+              <h4 className="font-semibold text-blue-800 mb-2">{t('terms.sections.updates.title')}</h4>
               <p className="text-blue-700">
-                We may update these Terms of Service from time to time to reflect changes in our services, business practices, or legal requirements. We will notify you of any material changes by posting the updated terms on our website and updating the "Last Updated" date. Your continued use of our services after such changes constitutes acceptance of the updated terms.
+                {t('terms.sections.updates.content')}
               </p>
             </motion.div>
           </div>

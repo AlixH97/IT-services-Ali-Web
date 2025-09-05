@@ -42,16 +42,16 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+      isScrolled ? 'bg-primary/95 backdrop-blur-md shadow-lg border-b border-accent/20' : 'bg-transparent'
     }`}>
       <div className="container-custom px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-gradient-to-br from-accent to-secondary-accent rounded-lg flex items-center justify-center shadow-lg">
               <span className="text-white font-bold text-xl">IT</span>
             </div>
-            <span className="text-xl font-bold text-gray-900">Services</span>
+            <span className="text-xl font-bold text-text-primary">Services</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -60,8 +60,8 @@ const Navbar = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-gray-700 hover:text-primary-600 transition-colors duration-200 ${
-                  location.pathname === item.path ? 'text-primary-600 font-semibold' : ''
+                className={`text-text-primary hover:text-accent transition-colors duration-300 ${
+                  location.pathname === item.path ? 'text-accent font-semibold' : ''
                 }`}
               >
                 {item.label}
@@ -75,7 +75,7 @@ const Navbar = () => {
             <div className="relative">
               <button
                 onClick={() => setIsLanguageOpen(!isLanguageOpen)}
-                className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-accent/10 transition-colors duration-300"
               >
                 <Globe className="w-4 h-4" />
                 <span className="text-sm font-medium">
@@ -90,14 +90,14 @@ const Navbar = () => {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className="absolute top-full right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2"
+                    className="absolute top-full right-0 mt-2 w-48 bg-primary-light rounded-lg shadow-lg border border-accent/20 py-2"
                   >
                     {languages.map((language) => (
                       <button
                         key={language.code}
                         onClick={() => changeLanguage(language.code)}
-                        className={`w-full text-left px-4 py-2 hover:bg-gray-50 transition-colors duration-200 ${
-                          i18n.language === language.code ? 'bg-primary-50 text-primary-600' : ''
+                        className={`w-full text-left px-4 py-2 hover:bg-accent/10 transition-colors duration-300 ${
+                          i18n.language === language.code ? 'bg-accent/20 text-accent' : 'text-text-primary'
                         }`}
                       >
                         <span className="mr-2">{language.flag}</span>
@@ -112,7 +112,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+              className="md:hidden p-2 rounded-lg hover:bg-accent/10 transition-colors duration-300"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -126,15 +126,15 @@ const Navbar = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden border-t border-gray-200 py-4"
+              className="md:hidden border-t border-accent/20 py-4"
             >
               {navItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`block py-3 text-gray-700 hover:text-primary-600 transition-colors duration-200 ${
-                    location.pathname === item.path ? 'text-primary-600 font-semibold' : ''
+                  className={`block py-3 text-text-primary hover:text-accent transition-colors duration-300 ${
+                    location.pathname === item.path ? 'text-accent font-semibold' : ''
                   }`}
                 >
                   {item.label}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -25,45 +25,45 @@ const Footer = () => {
 
   const footerLinks = {
     services: [
-      'IT Support & Maintenance',
-      'Cybersecurity Solutions',
-      'On-Site Support',
-      'Website Development',
-      'ERP Implementation',
-      'Cloud Services'
+      t('footer.services.itSupport'),
+      t('footer.services.cybersecurity'),
+      t('footer.services.onSite'),
+      t('footer.services.webDev'),
+      t('footer.services.erp'),
+      t('footer.services.cloud')
     ],
     company: [
-      'About Us',
-      'Our Team',
-      'Careers',
-      'News & Updates',
-      'Case Studies',
-      'Testimonials'
+      t('footer.company.about'),
+      t('footer.company.team'),
+      t('footer.company.careers'),
+      t('footer.company.news'),
+      t('footer.company.caseStudies'),
+      t('footer.company.testimonials')
     ],
     support: [
-      'Help Center',
-      'Contact Support',
-      'Documentation',
-      'Training Resources',
-      'Community Forum',
-      'Status Page'
+      t('footer.support.helpCenter'),
+      t('footer.support.contact'),
+      t('footer.support.documentation'),
+      t('footer.support.training'),
+      t('footer.support.community'),
+      t('footer.support.status')
     ],
     legal: [
-      'Privacy Policy',
-      'Terms of Service',
-      'Cookie Policy',
-      'GDPR Compliance',
-      'Data Protection',
-      'Security Policy'
+      t('footer.legal.privacy'),
+      t('footer.legal.terms'),
+      t('footer.legal.cookies'),
+      t('footer.legal.gdpr'),
+      t('footer.legal.dataProtection'),
+      t('footer.legal.security')
     ]
   };
 
-  const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Instagram, href: '#', label: 'Instagram' }
-  ];
+  const socialLinks = useMemo(() => [
+    { icon: Facebook, href: '#', label: t('footer.social.facebook') },
+    { icon: Twitter, href: '#', label: t('footer.social.twitter') },
+    { icon: Linkedin, href: '#', label: t('footer.social.linkedin') },
+    { icon: Instagram, href: '#', label: t('footer.social.instagram') }
+  ], [t]);
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -76,7 +76,7 @@ const Footer = () => {
               <div className="w-10 h-10 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">IT</span>
               </div>
-              <span className="text-xl font-bold">Services</span>
+              <span className="text-xl font-bold">{t('footer.companyName')}</span>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed max-w-md">
               {t('footer.description')}
@@ -86,15 +86,15 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-primary-400" />
-                <span className="text-gray-300">Musterstraße 123, 10115 Berlin, Germany</span>
+                <span className="text-gray-300">{t('footer.contact.address')}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-primary-400" />
-                <span className="text-gray-300">+49 30 12345678</span>
+                <span className="text-gray-300">{t('footer.contact.phone')}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-primary-400" />
-                <span className="text-gray-300">info@itservices.com</span>
+                <span className="text-gray-300">{t('footer.contact.email')}</span>
               </div>
             </div>
           </div>
@@ -161,17 +161,17 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/contact" className="text-light-text/80 hover:text-primary-blue transition-colors duration-200">
-                  GDPR Compliance
+                  {t('footer.legal.gdprCompliance')}
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="text-light-text/80 hover:text-primary-blue transition-colors duration-200">
-                  Data Protection
+                  {t('footer.legal.dataProtection')}
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="text-light-text/80 hover:text-primary-blue transition-colors duration-200">
-                  Security Policy
+                  {t('footer.legal.securityPolicy')}
                 </Link>
               </li>
             </ul>
@@ -181,18 +181,18 @@ const Footer = () => {
         {/* Newsletter Signup */}
         <div className="mt-16 pt-8 border-t border-gray-800">
           <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-2xl font-bold mb-4">Stay Updated</h3>
+            <h3 className="text-2xl font-bold mb-4">{t('footer.newsletter.title')}</h3>
             <p className="text-gray-300 mb-6">
-              Subscribe to our newsletter for the latest insights and updates in IT services.
+              {t('footer.newsletter.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <input
                 type="email"
-                placeholder="Enter your email address"
+                placeholder={t('footer.newsletter.placeholder')}
                 className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               />
               <button className="btn-primary whitespace-nowrap">
-                Subscribe
+                {t('footer.newsletter.subscribe')}
               </button>
             </div>
           </div>
@@ -226,12 +226,12 @@ const Footer = () => {
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2 text-gray-400 text-sm">
                 <Globe className="w-4 h-4" />
-                <span>English</span>
+                <span>{t('footer.currentLanguage')}</span>
               </div>
               <button
                 onClick={scrollToTop}
                 className="flex items-center space-x-2 text-gray-400 hover:text-primary-400 transition-colors duration-200"
-                aria-label="Back to top"
+                aria-label={t('common.backToTop')}
               >
                 <span className="text-sm">{t('common.backToTop')}</span>
                 <ArrowUp className="w-4 h-4" />
